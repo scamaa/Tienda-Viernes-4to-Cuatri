@@ -1,0 +1,65 @@
+/* Este es un archivo para CSS */
+
+*{
+   margin: 0; 
+   box-sizing: border-box;
+}
+
+body{
+    background-color: whitesmoke;
+    font-family: sans-serif;
+    padding: 90px 20px 0 0;
+}
+
+.header{
+    background-color: #076af0;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.aside{
+    background-color: aqua;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    bottom: 20px;
+    width: 20%
+}
+
+.contenido{
+    background-color: burlywood;
+    position: fixed;
+    top: 80px;
+    left: 20%;
+    bottom: 20px;
+    overflow: scroll;
+}
+
+.footer{
+    background-color: black;
+    color: white;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+p{
+   color: green;
+}
+
+aricle p{
+   color: blue;
+}
+
+#noticia {
+    color: brown;
+}
+
+.titulo{
+    color: blueviolet;
+}
