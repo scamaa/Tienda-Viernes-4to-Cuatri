@@ -34,6 +34,7 @@ body{
     position: fixed;
     top: 80px;
     left: 20%;
+    right: 0;
     bottom: 20px;
     overflow: scroll;
 }
@@ -62,4 +63,64 @@ aricle p{
 
 .titulo{
     color: blueviolet;
+}
+
+.textoCentrado{
+    text-align: center;
+}
+
+.textoDerecha{
+    text-align: right;
+}
+
+tbody tr:nth-child(odd){
+    background-color: green;
+}
+
+tbody tr:nth-child(even){
+    background-color: white;
+}
+
+/* Comienza la definicion del menu */
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    max-width: 992px;
+    margin: 0 auto;
+}
+
+.nav-link{
+    color: white;
+    text-decoration: none;
+}
+
+.nav-menu{
+    display: flex;
+    margin-right: 40px;
+    list-style: none;
+    line-height: 80px;
+}
+
+.nav-menu-item{
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+.nav-menu-link{
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.nav-menu-link:hover{
+    background-color: #024070;
+    font-size: 22px;
+    transition: 0.5s;
+}
+
+.logo{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0 40px;
+    line-height: 80px;
 }
