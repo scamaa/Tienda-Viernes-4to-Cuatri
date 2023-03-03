@@ -34,10 +34,10 @@ public class ClienteController {
         return "modificaCliente";
     }
     
-    @PostMapping
+    @PostMapping("cliente/guardar")
     public String guardarCliente(Cliente cliente){
         clienteService.saveCliente(cliente);
-        return "redirect;/";
+        return "redirect:/";
     }
     
     @GetMapping("/cliente/modificar/{idCliente}")
