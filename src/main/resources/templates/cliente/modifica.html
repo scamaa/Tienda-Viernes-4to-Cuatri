@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>
     </head>
     <body>
+        <header th:replace="~{layout/plantilla :: header}">
         
         <h2>Datos de Clientes</h2>
         <br>
         <hr>
-        <a th:href="@{//}">Regresar</a>
+        <a th:href="@{/}">Regresar</a>
         
         <form th:action="@{/cliente/guardar}"
             method="post"
@@ -49,5 +50,6 @@
             <br>
             <input type="submit" value="Guardar" />
         </form>
+        <footer th:replace="~{layout/plantilla :: footer}">
     </body>
 </html>
