@@ -7,6 +7,24 @@
     <body>
         <header th:replace="~{layout/plantilla :: header}">
             
+            <div class="container">
+                 <div class="row row-cols-3">
+                      <div class="card" th:each="articulo : ${articulos}">
+                           <div class="card-body">
+                               <img th:src="${articulo.imagen}" width="200px"/>
+                               <h5 class="card-title">[[${articulo.descripcion}]]</h5>
+                               <h6 class="card-subtitle mb-2 text-muted text-end">
+                                    [[${articulo.precio}]]
+                                     </h6>
+                               <a class="card-link" 
+                                   th:href="@{/carrito/comprar/} + ${articulo.idArticulo}">
+                                    Comprar</a>
+                                <p class="card-text">[[${articulo.detalle}]]</p>
+                                   </div>
+                           </div>
+                     </div>
+                  </div>
+            
         <footer th:replace="~{layout/plantilla :: footer}">
     </body>
 </html>
