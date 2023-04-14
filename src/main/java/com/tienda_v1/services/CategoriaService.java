@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.tienda_v1.services;
 
 import com.tienda_v1.domain.Categoria;
 import java.util.List;
 
-/**
- *
- * @author Santiago
- */
 public interface CategoriaService {
     
     //Obtiene la lista de registros de la tabla categoria

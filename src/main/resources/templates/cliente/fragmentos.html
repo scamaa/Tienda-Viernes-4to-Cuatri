@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}">
         <title>TechShop</title>
         <meta charset="UTF-8"/>
     </head>
     <body>
- <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
+
+        <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
-            <div class="container">
+            <div class="container"  sec:authorize="hasRole('ROLE_ADMIN')">
                 <div class="row">
                     <div class="col-md-3">   
                         <button 
@@ -15,7 +18,7 @@
                             class="btn btn-primary btn-block" 
                             data-bs-toggle="modal" 
                             data-bs-target="#agregarCliente">
-                            <i class="fa-user-plus"></i> [[#{cliente.agregar}]]
+                            <i class="fas fa-plus"></i> [[#{cliente.agregar}]]
                         </button>
                     </div>
                 </div>
@@ -29,12 +32,6 @@
                  tabindex="-1" 
                  aria-labelledby="exampleModalLabel" 
                  aria-hidden="true">
-                <!--
-                  modal-lg Monitores Anchos
-                  modal-md Monitores Normales
-                  modal-sm Tablets
-                  modal-xs Telefonos
-                -->
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header bg-info text-white">
@@ -68,7 +65,7 @@
                                     <input type="number" class="form-control" name="credito.limite">
                                 </div>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer"  sec:authorize="hasRole('ROLE_ADMIN')">
                                 <button class="btn btn-primary" type="submit">[[#{accion.guardar}]]</button>
                             </div>
                         </form>
@@ -99,13 +96,13 @@
                                             <td>[[${contador.count}]]</td>
                                             <td>[[${cliente.nombre}]]</td>
                                             <td>[[${cliente.apellidos}]]</td>
-                                            <td>[[${cliente.credito.limite}]]</td>
-                                            <td><a th:href="@{/cliente/eliminar/}+${cliente.idCliente}"
+                                            <td class="text-end">[[${#numbers.setFormatDecimal(cliente.credito.limite,3,2)}]]</td>
+                                            <td  sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/cliente/eliminar/}+${cliente.idCliente}"
                                                    class="btn btn-danger">
-                                                    <i class="fas fa-trash"></i>[[#{accion.eliminar}]]</a>
+                                                    <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
                                                 <a th:href="@{/cliente/modificar/}+${cliente.idCliente}"
                                                    class="btn btn-success">
-                                                    <i class="fas fa-pencil"></i>[[#{accion.actualizar}]]</a></td></tr>
+                                                    <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -119,6 +116,12 @@
                             <div class="card-body">
                                 <h3>[[#{cliente.total}]]</h3>
                                 <h4 class="fs-2"><i class="fas fa-users"></i> [[${totalClientes}]]</h4>
+                            </div>
+                        </div>
+                        <div class="card text-center bg-primary text-white mb-3">
+                            <div class="card-body">
+                                <h3>[[#{cliente.total.limite}]]</h3>
+                                <h4 class="fs-2"><i class="fas fa-money-bill-wave"></i> [[${totalLimite}]]</h4>
                             </div>
                         </div>
                     </div>
@@ -142,7 +145,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="card">
-                                            <div class="card-header bg-info">
+                                            <div class="card-header">
                                                 <h4>[[#{accion.actualizar}]]</h4>
                                             </div>
                                             <div class="card-body">
@@ -193,19 +196,19 @@
                             <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                         </a>
                     </div>
-                    <div class="col-md-4 d-grid">                                
+                    <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">                                
                         <a th:href="@{/cliente/eliminar/}+${cliente.idCliente}"
                            class="btn btn-danger">
                             <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>
                     </div>
-                    <div class="col-md-4 d-grid">
+                    <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="submit" class="btn btn-success">
                             <i class="fas fa-check"></i> [[#{accion.guardar}]]
                         </button>
                     </div>
                 </div>
             </div>
-        </section>
+        </section>        
     </body>
 </html>
