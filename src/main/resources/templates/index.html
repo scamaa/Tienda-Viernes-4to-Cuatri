@@ -1,30 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head th:replace="~{layout/plantilla :: head}">
-        <title>TechShop</title>
-        <meta charset="UTF-8"/>
+        <title>TechShop</title>        
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
-            
-            <div class="container">
-                 <div class="row row-cols-3">
-                      <div class="card" th:each="articulo : ${articulos}">
-                           <div class="card-body">
-                               <img th:src="${articulo.imagen}" width="200px"/>
-                               <h5 class="card-title">[[${articulo.descripcion}]]</h5>
-                               <h6 class="card-subtitle mb-2 text-muted text-end">
-                                    [[${articulo.precio}]]
-                                     </h6>
-                               <a class="card-link" 
-                                   th:href="@{/carrito/comprar/} + ${articulo.idArticulo}">
-                                    Comprar</a>
-                                <p class="card-text">[[${articulo.detalle}]]</p>
-                                   </div>
-                           </div>
-                     </div>
-                  </div>
-            
-        <footer th:replace="~{layout/plantilla :: footer}"/>
+        <section th:replace="~{carrito/fragmentosCarrito :: listadoArticulos}"/>
+        <footer th:replace="~{layout/plantilla :: footer}"/>  
+
+        <script>
+            function addCard(formulario){             
+              var valor=formulario.elements[0].value;                
+              var url = '/carrito/agregar';
+              url = url + '/' +valor;
+              $("#resultsBlock").load(url);         
+            }
+        </script>
     </body>
 </html>
